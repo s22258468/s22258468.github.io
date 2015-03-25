@@ -1,314 +1,138 @@
+
 $(function(){
 
-	var currentText='';
-	var operator='';
-	var preText='';
-	var equal= '';
+	var text=' ';
+	var curN=0;
+	var preN=0;
+	var ansN=0;
+	var operator=1;
 
-	$('#btn0').on('click',function(){
-		// alert('currentText'+currentText); 
-		// alert('preText'+preText);
-		// alert('operator'+operator);
-		// alert('equal'+equal);
-
-		// if(currentText=='0'){
-		// 	currentText ='0';
-		if(currentText==''&&preText==''&&operator==''&&equal==''||currentText=='0'){
-			// alert('C3');
-			currentText ='0';
-			// render();
-		}else if(currentText!=''&&preText==''&&operator==''&&equal==''){
-			// alert('C4');
-			currentText =currentText+'0';
-			render();
-		}else if(currentText==''&&preText!=''&&operator!=''&&equal==''){
-		 	// alert('C1');
-		 	currentText =currentText+'0';
-			render();
-		}else if(currentText!=''&&preText==''&&operator==''&&equal!=''){
-			// alert('C2');
-			equal='';
-			currentText='0';
-			operator='';
-			render();
-			update();
-			// preText='';
-			$('#operator').html("&nbsp");
-			// alert('AcurrentText='+currentText); 
-			// alert('ApreText='+preText);
-			// alert('Aoperator='+operator);
-			// alert('Aequal='+equal);
-
-		}else if(currentText!=''&&preText!=''&&operator!=''&&equal==''){
-			// alert('hello')
-			currentText =currentText+'0';
-			render();
-		}else{
-			currentText =currentText+'0';
-			render();
-		}
-	 })
-
-	$('#btn1').on('click',function(){
-		if(currentText=='0'){
-			currentText='';
-		}
-
-		if(currentText!=''&&preText==''&&operator==''&&equal!=''){
-			currentText='1';
-			operator='';
-			render();
-			update();
-			$('#operator').html("&nbsp");
-		}
-		// alert(currentText);
-		currentText =currentText+'1';
-		// 	alert(currentText);
+		$('#btn1').on('click',function(){
+		text=text+'1';
 		render();
-		// alert('preText'+preText);
-	 })
-	$('#btn2').on('click',function(){
-		if(currentText=='0'){
-			currentText='';
-		}
-
-		if(currentText!=''&&preText==''&&operator==''&&equal!=''){
-			currentText='2';
-			operator='';
-			render();
-			update();
-			$('#operator').html("&nbsp");
-		}
-		currentText =currentText+'2';
-		render();
-	 })
-	$('#btn3').on('click',function(){
-		if(currentText=='0'){
-			currentText='';
-		}
-
-		if(currentText!=''&&preText==''&&operator==''&&equal!=''){
-			currentText='3';
-			operator='';
-			render();
-			update();
-			$('#operator').html("&nbsp");
-		}
-		currentText =currentText+'3';
-		render();
-	 })
-	$('#btn4').on('click',function(){
-		if(currentText=='0'){
-			currentText='';
-		}
-
-		if(currentText!=''&&preText==''&&operator==''&&equal!=''){
-			currentText='4';
-			operator='';
-			render();
-			update();
-			$('#operator').html("&nbsp");
-		}
-		currentText =currentText+'4';
-		render();
-	 })
-	$('#btn5').on('click',function(){
-		if(currentText=='0'){
-			currentText='';
-		}
-
-		if(currentText!=''&&preText==''&&operator==''&&equal!=''){
-			currentText='5';
-			operator='';
-			render();
-			update();
-			$('#operator').html("&nbsp");
-		}
-		currentText =currentText+'5';
-		render();
-	 })
-	$('#btn6').on('click',function(){
-		if(currentText=='0'){
-			currentText='';
-		}
-
-		if(currentText!=''&&preText==''&&operator==''&&equal!=''){
-			currentText='6';
-			operator='';
-			render();
-			update();
-			$('#operator').html("&nbsp");
-		}
-		currentText =currentText+'6';
-		render();
-	 })
-	$('#btn7').on('click',function(){
-		if(currentText=='0'){
-			currentText='';
-		}
-
-		if(currentText!=''&&preText==''&&operator==''&&equal!=''){
-			currentText='7';
-			operator='';
-			render();
-			update();
-			$('#operator').html("&nbsp");
-		}
-		currentText =currentText+'7';
-		render();
-	 })
-	$('#btn8').on('click',function(){
-		if(currentText=='0'){
-			currentText='';
-		}
-
-		if(currentText!=''&&preText==''&&operator==''&&equal!=''){
-			currentText='8';
-			operator='';
-			render();
-			update();
-			$('#operator').html("&nbsp");
-		}
-		currentText =currentText+'8';
-		render();
-	 })
-	$('#btn9').on('click',function(){
-		if(currentText=='0'){
-			currentText='';
-		}
+		curN=curN*10+1;
 		
-		if(currentText!=''&&preText==''&&operator==''&&equal!=''){
-			currentText='9';
-			operator='';
-			render();
-			update();
-			$('#operator').html("&nbsp");
-		}
-		currentText =currentText+'9';
+		})
+	$('#btn2').on('click',function(){
+	text=text+'2';
+	render();
+	curN=curN*10+2;
+	})
+		$('#btn3').on('click',function(){
+		text=text+'3';
 		render();
-	 })
-
-	$('#btnDot').on('click',function(){
-		if(currentText.indexOf('.')<0){
-			if(currentText==''){
-				currentText =currentText+'0.';
-				render();
-			}else{
-				currentText =currentText+'.';
-				render();
-			}		
-		}
-	 })
-
-	$('#btnClear').on('click',function(){
-		equal='';
-		currentText='0';
-		operator='';
-		render();
-		update();
-		$('#operator').html("&nbsp");
-		preText='';
-		// alert(preText);
+		curN=curN*10+3;
+		})
+$('#btn4').on('click',function(){
+	text=text+'4';
+	render();
+	curN=curN*10+4;
 	})
 
-	//operator
+	$('#btn5').on('click',function(){
+	text=text+'5';
+	//alert(text);
+	render();
+	curN=curN*10+5;
+	})
 
-	$('#btnDiv').on('click',function(){
-		if(currentText!=''&&preText!=''){
-			if(operator==='+'||operator==='-'||operator==='*'||operator==='÷'){
-				preCalculate();
-			}
-		}	
-		operator = '÷';
-		update();
-	 })
+$('#btn6').on('click',function(){
+	text=text+'6';
+	render();
+	curN=curN*10+6;
+	})
+$('#btn7').on('click',function(){
+	text=text+'7';
+	render();
+	curN=curN*10+7;
+	})
+$('#btn8').on('click',function(){
+	text=text+'8';
+	render();
+	curN=curN*10+8;
+	//alert(curN);
+	})
+$('#btn9').on('click',function(){
+	text=text+'9';
+	render();
+	curN=curN*10+9;
+	})
+$('#btn0').on('click',function(){
+	text=text+'0';
+	render();
+	curN=curN*10;
+	})
 
-	$('#btnMult').on('click',function(){
-		if(currentText!=''&&preText!=''){
-			if(operator==='+'||operator==='-'||operator==='*'||operator==='÷'){
-				preCalculate();
-			}
-		}	
-		operator = '*';
-		update();
-	 })
+//operator
 
-	$('#btnMinus').on('click',function(){
-		if (currentText=='') {
-			currentText='0';
-		}else if(currentText!=''&&preText!=''){
-			if(operator==='+'||operator==='-'||operator==='*'||operator==='÷'){
-				preCalculate();
-			}
-		}
-		// alert('hi');	
-		operator = '-';
-		update();
-	 })
+$('#btnplus').on('click',function(){
+	operate();
+	
+	operator=1;
+	})
+$('#btnmin').on('click',function(){
+	operate();
+	
+	operator=2;
+	})
+$('#btnmul').on('click',function(){
+	operate();
+	
+	operator=3;
+	})
+$('#btndiv').on('click',function(){
+	operate();
+	
+	operator=4;
+})
+$('#btnequal').on('click',function(){
+	
+	equal();
+	text=ansN;
+	render();
+	})
+$('#btnC').on('click',function(){
+		text ='';
+		render();
+		preN =0;
+	
+		curN=0;
+		ansN=0;
+		operator=' ';
 
-	$('#btnPlus').on('click',function(){
-		if(currentText!=''&&preText!=''){
-			if(operator==='+'||operator==='-'||operator==='*'||operator==='÷'){
-				preCalculate();
-			}
-		}	
-		operator = '+';
-		update();
-	 })
+	})
 
-	$('#btnEqual').on('click',function(){
-		equal='true';
-		preCalculate();
-		$('#operator').html('&nbsp');
-		operator='';
-		 // alert('operator = '+operator);
-		 // alert(currentText);
-	 })
-
-	function update(){
-		$('#operator').text(operator);
-		if(currentText!=''){
-			preText = currentText;
-		}
-		currentText = '';
-		// $('#message').text(currentText);
-	}
-
-	function render(){		
-		$('#message').text(currentText);
-	}
-
-	function preCalculate(){
-		var operateNum = currentText;
-		$('#message').text(calculate(preText, operateNum, operator));
-	}
-
-	function calculate(numA, numB, operator) {
-		var result;
-		numA = parseFloat(numA,10);
-		numB = parseFloat(numB,10);
-		switch (operator) {
-			case '+':
-				result = numA + numB;
-				break;
-			case '-':
-				result = numA - numB;
-				break;
-			case '*':
-				result = numA * numB;
-				break;
-			case '÷':
-				result = numA / numB;
-				break;
-			default:
-				return;
-				break;
-		}
-		preText = '';
-		result = (Math.round(result*10000000000))/10000000000;
-		currentText = result;
-		return result;
+function render(){
+		$('#message').text(text);
 	}
 
 
-});
+
+function operate(){
+preN=curN;
+//alert(preN);
+curN=0;
+text=' ';
+
+render();
+}
+
+function equal(){
+
+if (operator==1){
+	ansN= parseInt(preN,10)+parseInt(curN,10);
+	//alert(preN);
+};
+if (operator==2){
+	ansN= parseInt(preN,10)-parseInt(curN,10);
+};
+if (operator==3){
+	ansN= parseInt(preN,10)*parseInt(curN,10);
+};
+if (operator==4){
+	ansN= parseInt(preN,10) / parseInt(curN,10);
+};
+}
+
+
+})
